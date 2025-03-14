@@ -31,7 +31,8 @@ router.post('/signup', async (req, res) => {
         const tokenPayload = {
             id: user._id,
             email: user.email,
-            name: user.name
+            name: user.name,
+            role: user.role,
         };
 
         const token = setUser(tokenPayload);

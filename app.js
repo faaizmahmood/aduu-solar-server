@@ -27,12 +27,18 @@ const signupRouter = require('./src/routes/auth/signup');
 const profileRouter = require('./src/routes/profile/profile');
 const projectCreationRouter = require('./src/routes/projectManagement/createProject');
 const clientProjectRouter = require('./src/routes/projectManagement/viewProject');
+const clientOrderServiceRouter = require('./src/routes/projectManagement/orderService');
+const addStaffRouter = require('./src/routes/staff/addStaff');
+const getStaffRouter = require('./src/routes/staff/getStaff');
 
 app.use('/api/auth', signinRouter);
 app.use('/api/auth', signupRouter);
 app.use('/api/user', profileRouter);
 app.use('/api/project', projectCreationRouter);
 app.use('/api/project', clientProjectRouter);
+app.use('/api/order', clientOrderServiceRouter);
+app.use('/api/add', addStaffRouter);
+app.use('/api/get', getStaffRouter);
 
 // Base Route
 app.get('/', (req, res) => {
