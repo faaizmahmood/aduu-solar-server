@@ -30,6 +30,8 @@ const clientProjectRouter = require('./src/routes/projectManagement/viewProject'
 const clientOrderServiceRouter = require('./src/routes/projectManagement/orderService');
 const addStaffRouter = require('./src/routes/staff/addStaff');
 const getStaffRouter = require('./src/routes/staff/getStaff');
+const addServiceRouter = require('./src/routes/services/adminServices/addService');
+const getServiceRouter = require('./src/routes/services/adminServices/getServices');
 
 app.use('/api/auth', signinRouter);
 app.use('/api/auth', signupRouter);
@@ -39,6 +41,8 @@ app.use('/api/project', clientProjectRouter);
 app.use('/api/order', clientOrderServiceRouter);
 app.use('/api/add', addStaffRouter);
 app.use('/api/get', getStaffRouter);
+app.use('/api/service', addServiceRouter);
+app.use('/api/service', getServiceRouter);
 
 // Base Route
 app.get('/', (req, res) => {
