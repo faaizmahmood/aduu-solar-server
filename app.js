@@ -26,23 +26,33 @@ const signinRouter = require('./src/routes/auth/signin');
 const signupRouter = require('./src/routes/auth/signup');
 const profileRouter = require('./src/routes/profile/profile');
 const projectCreationRouter = require('./src/routes/projectManagement/createProject');
+const getProjectsRouter = require('./src/routes/projectManagement/getProjects');
 const clientProjectRouter = require('./src/routes/projectManagement/viewProject');
 const clientOrderServiceRouter = require('./src/routes/projectManagement/orderService');
 const addStaffRouter = require('./src/routes/staff/addStaff');
 const getStaffRouter = require('./src/routes/staff/getStaff');
 const addServiceRouter = require('./src/routes/services/adminServices/addService');
 const getServiceRouter = require('./src/routes/services/adminServices/getServices');
+const getSigleServiceRouter = require('./src/routes/services/adminServices/getSingleService');
+const updateServiceRouter = require('./src/routes/services/adminServices/editService');
+const deleterServiceRouter = require('./src/routes/services/adminServices/deleteServices');
+const orderServiceRouter = require('./src/routes/services/userServices/orderServcie');
 
 app.use('/api/auth', signinRouter);
 app.use('/api/auth', signupRouter);
 app.use('/api/user', profileRouter);
 app.use('/api/project', projectCreationRouter);
 app.use('/api/project', clientProjectRouter);
+app.use('/api/project', getProjectsRouter);
 app.use('/api/order', clientOrderServiceRouter);
 app.use('/api/add', addStaffRouter);
 app.use('/api/get', getStaffRouter);
 app.use('/api/service', addServiceRouter);
 app.use('/api/service', getServiceRouter);
+app.use('/api/service', getSigleServiceRouter);
+app.use('/api/service', updateServiceRouter);
+app.use('/api/service', deleterServiceRouter);
+app.use('/api/service', orderServiceRouter);
 
 // Base Route
 app.get('/', (req, res) => {

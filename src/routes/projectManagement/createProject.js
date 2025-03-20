@@ -1,7 +1,7 @@
 const express = require("express");
 const userMiddleware = require("../../middlewares/userMiddleware");
 const roleMiddleware = require("../../middlewares/roleMiddleware");
-const Project = require("../../models/Project");
+const Project = require("../../models/projects/Project");
 
 const router = express.Router();
 
