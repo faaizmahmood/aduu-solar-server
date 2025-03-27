@@ -9,7 +9,12 @@ const ProjectSchema = new mongoose.Schema(
         clientId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Link to the client creating it
         status: { type: String, enum: ["Pending", "Awaiting Assignment", "In Progress", "Completed"], default: "Pending" },
         description: { type: String, default: "" },
-        assignedStaff: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Assigned staff members
+        assignedStaff: [
+            {
+                _id: { type: mongoose.Schema.Types.ObjectId, ref: "staff" },
+                name: { type: String, required: true } // Store staff name
+            }
+        ],
     },
     { timestamps: true }
 );

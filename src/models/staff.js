@@ -41,10 +41,25 @@ const StaffSchema = new mongoose.Schema(
             type: String,
             default: null
         },
-        prjectAssigned: {
+        totalProjects: {
             type: Number,
             default: 0
         },
+        projectsAssigned: {
+            type: [
+                {
+                    projectId: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: "Project"
+                    },
+                    projectName: {
+                        type: String,
+                        required: true
+                    }
+                }
+            ],
+            default: null // Default value set to null when no project is assigned
+        }
     },
     { timestamps: true }
 );
