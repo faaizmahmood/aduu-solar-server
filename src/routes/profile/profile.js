@@ -3,9 +3,9 @@ const router = express.Router();
 
 const userMiddleware = require('../../middlewares/userMiddleware');
 const User = require('../../models/User');
+const Staff = require('../../models/staff');  // Import Staff model
 
 router.get('/profile', userMiddleware, async (req, res) => {
-
     const user = req.user;
 
     if (!user) {
@@ -15,10 +15,15 @@ router.get('/profile', userMiddleware, async (req, res) => {
     }
 
     try {
-        // Fetch the user details by user ID from the database
-        const userDetails = await User.findById(user.id);
+        // First, check in the User collection
+        let userDetails = await User.findById(user.id);
 
-        // If no user found, return 404
+        // If not found in User collection, check in Staff collection
+        if (!userDetails) {
+            userDetails = await Staff.findById(user.id);
+        }
+
+        // If no user found in either collection, return 404
         if (!userDetails) {
             return res.status(404).json({
                 message: 'User details not found',

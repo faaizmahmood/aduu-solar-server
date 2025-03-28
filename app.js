@@ -24,6 +24,7 @@ swaggerSetup(app);
 // Routes
 const signinRouter = require('./src/routes/auth/signin');
 const signupRouter = require('./src/routes/auth/signup');
+const companyRegisterRouter = require('./src/routes/auth/company');
 const profileRouter = require('./src/routes/profile/profile');
 const projectCreationRouter = require('./src/routes/projectManagement/createProject');
 const getProjectsRouter = require('./src/routes/projectManagement/getProjects');
@@ -39,8 +40,10 @@ const getSigleServiceRouter = require('./src/routes/services/adminServices/getSi
 const updateServiceRouter = require('./src/routes/services/adminServices/editService');
 const deleterServiceRouter = require('./src/routes/services/adminServices/deleteServices');
 const orderServiceRouter = require('./src/routes/services/userServices/orderServcie');
+const getCompanyDetailsRouter = require('./src/routes/company/getCompanyDetails');
 
 app.use('/api/auth', signinRouter);
+app.use('/api/auth', companyRegisterRouter);
 app.use('/api/auth', signupRouter);
 app.use('/api/user', profileRouter);
 app.use('/api/project', projectCreationRouter);
@@ -57,6 +60,7 @@ app.use('/api/service', getSigleServiceRouter);
 app.use('/api/service', updateServiceRouter);
 app.use('/api/service', deleterServiceRouter);
 app.use('/api/service', orderServiceRouter);
+app.use('/api/company', getCompanyDetailsRouter);
 
 // Base Route
 app.get('/', (req, res) => {

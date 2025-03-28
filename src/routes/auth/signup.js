@@ -5,7 +5,7 @@ const { setUser } = require('../../utils/jwt');
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, companyRole, role, companyId } = req.body;
 
     if (!name || !email || !password) {
         return res.status(400).json({ message: "All fields are required." });
@@ -22,7 +22,9 @@ router.post('/signup', async (req, res) => {
             name,
             email,
             password: password,
-            role: 'client',
+            role: role || 'client',
+            companyRole: companyRole || null,
+            companyId
         };
 
         const user = new User(userPayload);
@@ -39,7 +41,8 @@ router.post('/signup', async (req, res) => {
 
         res.status(201).json({
             message: "User registered successfully.",
-            authToken: token
+            authToken: token,
+            userId: user._id
         });
 
     } catch (error) {

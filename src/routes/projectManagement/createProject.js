@@ -8,7 +8,7 @@ const router = express.Router();
 // Create a new project
 router.post("/create-project", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
     try {
-        const { projectName, siteAddress, siteOwner, description } = req.body;
+        const { projectName, siteAddress, siteOwner, description, companyId } = req.body;
         const clientId = req.user.id; // Extract client ID from authenticated user
 
         if (!projectName || !siteAddress || !siteOwner) {
@@ -19,7 +19,7 @@ router.post("/create-project", userMiddleware, roleMiddleware(["client"]), async
             projectName,
             siteAddress,
             siteOwner,
-            companyId: req.user.companyId || null, // If user has a company, link it
+            companyId: companyId || null, // If user has a company, link it
             clientId,
             description,
             status: "Pending",

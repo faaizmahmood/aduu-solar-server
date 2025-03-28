@@ -18,10 +18,15 @@ router.post("/add-staff", userMiddleware, roleMiddleware(["admin"]), async (req,
     }
 
     try {
-        // **Check if user already exists**
-        let existingUser = await Staff.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: "User already exists." });
+
+        // **Check if staff already exists**
+        let existingStaff = await Staff.findOne({ email });
+
+        // **Check if user exists in User collection**
+        let existingUser = await User.findOne({ email });
+
+        if (existingStaff || existingUser) {
+            return res.status(400).json({ message: "User already exists in the system." });
         }
 
         // **Create New Staff**
