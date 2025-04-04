@@ -4,6 +4,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const swaggerSetup = require('./src/config/swagger'); // Import Swagger setup
 const db = require('./src/config/db')
+require("./src/utils/cronJobs");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -41,6 +43,9 @@ const updateServiceRouter = require('./src/routes/services/adminServices/editSer
 const deleterServiceRouter = require('./src/routes/services/adminServices/deleteServices');
 const orderServiceRouter = require('./src/routes/services/userServices/orderServcie');
 const getCompanyDetailsRouter = require('./src/routes/company/getCompanyDetails');
+const createInvoicesRouter = require('./src/routes/invoices/createInvoices');
+const getUserInvoicesRouter = require('./src/routes/invoices/getInvoices');
+const markAsInvoicesRouter = require('./src/routes/invoices/markAsPaid');
 
 app.use('/api/auth', signinRouter);
 app.use('/api/auth', companyRegisterRouter);
@@ -61,6 +66,9 @@ app.use('/api/service', updateServiceRouter);
 app.use('/api/service', deleterServiceRouter);
 app.use('/api/service', orderServiceRouter);
 app.use('/api/company', getCompanyDetailsRouter);
+app.use('/api/invoice', createInvoicesRouter);
+app.use('/api/invoice', getUserInvoicesRouter);
+app.use('/api/invoice', markAsInvoicesRouter);
 
 // Base Route
 app.get('/', (req, res) => {

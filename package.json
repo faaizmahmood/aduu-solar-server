@@ -19,6 +19,7 @@
     "mongoose": "^8.10.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
     "redoc-express": "^2.1.0",
     "server": "file:",
