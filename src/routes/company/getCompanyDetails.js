@@ -5,7 +5,7 @@ const User = require("../../models/User");
 const router = express.Router();
 
 // GET Company Details with Associated Members and Owner Info
-router.get("/company-details/:companyId", async (req, res) => {
+router.get("/:companyId", async (req, res) => {
     try {
         const { companyId } = req.params;
 

@@ -24,9 +24,6 @@ app.use(morgan('dev'));
 swaggerSetup(app);
 
 // Routes
-const signinRouter = require('./src/routes/auth/signin');
-const signupRouter = require('./src/routes/auth/signup');
-const companyRegisterRouter = require('./src/routes/auth/company');
 const profileRouter = require('./src/routes/profile/profile');
 const projectCreationRouter = require('./src/routes/projectManagement/createProject');
 const getProjectsRouter = require('./src/routes/projectManagement/getProjects');
@@ -42,33 +39,50 @@ const getSigleServiceRouter = require('./src/routes/services/adminServices/getSi
 const updateServiceRouter = require('./src/routes/services/adminServices/editService');
 const deleterServiceRouter = require('./src/routes/services/adminServices/deleteServices');
 const orderServiceRouter = require('./src/routes/services/userServices/orderServcie');
-const getCompanyDetailsRouter = require('./src/routes/company/getCompanyDetails');
 const createInvoicesRouter = require('./src/routes/invoices/createInvoices');
 const getUserInvoicesRouter = require('./src/routes/invoices/getInvoices');
 const markAsInvoicesRouter = require('./src/routes/invoices/markAsPaid');
+
+
+// working with
+const signinRouter = require('./src/routes/auth/signin');
+const signupRouter = require('./src/routes/auth/signup');
+const companyRegisterRouter = require('./src/routes/auth/company');
+
+// ----
+const companyRouter = require('./src/routes/company/company');
+const dashboardRouter = require('./src/routes/dashboard/dashboard');
 
 app.use('/api/auth', signinRouter);
 app.use('/api/auth', companyRegisterRouter);
 app.use('/api/auth', signupRouter);
 app.use('/api/user', profileRouter);
+
 app.use('/api/project', projectCreationRouter);
 app.use('/api/project', clientProjectRouter);
 app.use('/api/project', getProjectsRouter);
 app.use('/api/project', getSingleProjectsRouter);
+
 app.use('/api/order', clientOrderServiceRouter);
+
 app.use('/api/add', addStaffRouter);
 app.use('/api/get', getStaffRouter);
 app.use('/api/staff', assignStaffRouter);
+
 app.use('/api/service', addServiceRouter);
 app.use('/api/service', getServiceRouter);
 app.use('/api/service', getSigleServiceRouter);
 app.use('/api/service', updateServiceRouter);
 app.use('/api/service', deleterServiceRouter);
 app.use('/api/service', orderServiceRouter);
-app.use('/api/company', getCompanyDetailsRouter);
+
 app.use('/api/invoice', createInvoicesRouter);
 app.use('/api/invoice', getUserInvoicesRouter);
 app.use('/api/invoice', markAsInvoicesRouter);
+
+// --- managed
+app.use('/api/company', companyRouter);
+app.use('/api/dashboard', dashboardRouter);
 
 // Base Route
 app.get('/', (req, res) => {
