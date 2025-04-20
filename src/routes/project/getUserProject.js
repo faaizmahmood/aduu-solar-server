@@ -7,7 +7,7 @@ const User = require("../../models/User");
 const router = express.Router();
 
 // Get projects for the user (either company-wide or individual)
-router.get("/client-projects", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
+router.get("/", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
     try {
         const userId = req.user.id; // Authenticated user ID
 

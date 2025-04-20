@@ -5,22 +5,19 @@ const Service = require("../../../models/services/addServiceModel");
 
 const router = express.Router();
 
-// Get Single services
+// Get all services
 router.get(
-    "/get-service/:serviceId",
+    "/",
     userMiddleware,
-    roleMiddleware(["admin"]),
+    roleMiddleware(["admin", "client"]),
     async (req, res) => {
-
-        const { serviceId } = req.params;
-
         try {
-            const SignleServices = await Service.findOne({ _id: serviceId });
+            const allServices = await Service.find();
 
             return res.status(200).json({
                 success: true,
                 message: "Services retrieved successfully.",
-                services: SignleServices,
+                services: allServices,
             });
 
         } catch (error) {

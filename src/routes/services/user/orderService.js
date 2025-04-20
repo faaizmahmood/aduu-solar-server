@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require("../../../models/services/orderService");
 const Project = require("../../../models/projects/Project"); // Import Project Model
 
-router.post("/order-service", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const { clientId, companyId, projectId, services } = req.body;
 

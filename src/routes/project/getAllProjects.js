@@ -4,7 +4,7 @@ const Project = require("../../models/projects/Project");
 const OrderService = require("../../models/services/orderService");
 const Service = require("../../models/services/addServiceModel");
 
-router.get("/get-projects", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const projects = await Project.find().sort({ createdAt: -1 });
         const orders = await OrderService.find();

@@ -22,7 +22,7 @@ const upload = multer({ storage });
 
 // Create an order and upload files
 router.post(
-    "/order-service",
+    "/",
     userMiddleware,
     roleMiddleware(["client"]),
     upload.fields([

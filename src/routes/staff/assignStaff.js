@@ -6,7 +6,7 @@ const userMiddleware = require("../../middlewares/userMiddleware");
 const roleMiddleware = require("../../middlewares/roleMiddleware");
 
 // Assign multiple staff members to a project
-router.post("/assign-staff", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
+router.post("/", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
     try {
         const { projectId, staffIds } = req.body;
 

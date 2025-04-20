@@ -6,7 +6,7 @@ const Project = require("../../models/projects/Project");
 const router = express.Router();
 
 // Create a new project
-router.post("/create-project", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
+router.post("/", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
     try {
         const { projectName, siteAddress, siteOwner, description, companyId } = req.body;
         const clientId = req.user.id; // Extract client ID from authenticated user

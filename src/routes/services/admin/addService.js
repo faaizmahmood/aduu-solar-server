@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Add a new service
 router.post(
-    "/add-service",
+    "/",
     userMiddleware,
     roleMiddleware(["admin"]),
     async (req, res) => {

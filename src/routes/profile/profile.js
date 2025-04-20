@@ -5,7 +5,7 @@ const userMiddleware = require('../../middlewares/userMiddleware');
 const User = require('../../models/User');
 const Staff = require('../../models/staff');  // Import Staff model
 
-router.get('/profile', userMiddleware, async (req, res) => {
+router.get('/', userMiddleware, async (req, res) => {
     const user = req.user;
 
     if (!user) {

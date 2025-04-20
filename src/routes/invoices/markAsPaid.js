@@ -5,7 +5,7 @@ const roleMiddleware = require("../../middlewares/roleMiddleware");
 const userMiddleware = require("../../middlewares/userMiddleware");
 
 // Route to mark an invoice as paid (Admin only)
-router.put("/mark-as-paid/:invoiceId", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
+router.put("/:invoiceId", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
     try {
         const { invoiceId } = req.params;
 

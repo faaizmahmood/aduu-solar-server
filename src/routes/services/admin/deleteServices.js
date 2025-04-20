@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Delete a service
 router.delete(
-    "/delete-service/:serviceID",
+    "/:serviceID",
     userMiddleware,
     roleMiddleware(["admin"]),
     async (req, res) => {

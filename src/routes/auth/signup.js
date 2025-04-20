@@ -4,7 +4,7 @@ const { setUser } = require('../../utils/jwt');
 
 const router = express.Router();
 
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
     const { name, email, password, companyRole, role, companyId } = req.body;
 
     if (!name || !email || !password) {

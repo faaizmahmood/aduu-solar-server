@@ -1,12 +1,13 @@
 const express = require("express");
 const Staff = require("../../models/staff");
+const User = require("../../models/User");
 const userMiddleware = require("../../middlewares/userMiddleware");
 const roleMiddleware = require("../../middlewares/roleMiddleware");
 
 const router = express.Router();
 
 // **POST /admin/add-staff** - Only Admins can add staff
-router.post("/add-staff", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
+router.post("/", userMiddleware, roleMiddleware(["admin"]), async (req, res) => {
     const { name, email, password, workingRole, phone, status } = req.body;
 
 

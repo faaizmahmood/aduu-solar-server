@@ -6,7 +6,7 @@ const Project = require("../../models/projects/Project");
 const userMiddleware = require("../../middlewares/userMiddleware");
 const roleMiddleware = require("../../middlewares/roleMiddleware");
 
-router.post("/create-invoice", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
+router.post("/", userMiddleware, roleMiddleware(["client"]), async (req, res) => {
     try {
         const { orderId, clientId, projectId, companyId, totalAmount, services, status, dueDate, paidAt } = req.body;
 

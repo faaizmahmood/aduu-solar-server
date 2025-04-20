@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Update service
 router.put(
-    "/update-service/:serviceId",
+    "/:serviceId",
     userMiddleware,
     roleMiddleware(["admin"]),
     async (req, res) => {

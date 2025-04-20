@@ -6,7 +6,7 @@ const Service = require("../../models/services/addServiceModel");
 const Invoice = require("../../models/invoices/invoices");
 
 // Get a single project by ID with its order and services
-router.get("/get-single-project/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
