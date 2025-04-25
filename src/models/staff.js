@@ -58,8 +58,14 @@ const StaffSchema = new mongoose.Schema(
                     }
                 }
             ],
-            default: null // Default value set to null when no project is assigned
-        }
+            default: null
+        },
+        lastReadMessages: [
+            {
+                projectId: mongoose.Schema.Types.ObjectId,
+                lastReadAt: Date
+            }
+        ]
     },
     { timestamps: true }
 );

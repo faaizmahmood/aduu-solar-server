@@ -7,6 +7,7 @@ const db = require('./src/config/db');
 require("./src/utils/cronJobs");
 const http = require('http');
 const { Server } = require('socket.io');  // Import socket.io
+const registerMessagingSocket = require('./src/sockets/messagingSocket');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,27 +25,7 @@ const io = new Server(server, {
 });
 
 // Socket Events
-io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  // Handle 'joinProject' event
-  socket.on('joinProject', (projectId) => {
-    socket.join(projectId);
-    console.log(`User joined project: ${projectId}`);
-  });
-
-  // Handle 'sendMessage' event
-  socket.on('sendMessage', (message) => {
-    // Emit 'receiveMessage' event to the relevant room (project)
-    io.to(message.projectId).emit('receiveMessage', message);
-    console.log('Message sent:', message);
-  });
-
-  // Handle disconnection
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-});
+registerMessagingSocket(io)
 
 // Middleware
 app.use(bodyParser.json());

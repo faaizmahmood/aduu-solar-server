@@ -37,9 +37,16 @@ const UserSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Company",
             default: null
-        }
+        },
+        lastReadMessages: [
+            {
+                projectId: mongoose.Schema.Types.ObjectId,
+                lastReadAt: Date
+            }
+        ]
+
     },
-    { timestamps: true } // Automatically adds createdAt & updatedAt
+    { timestamps: true }
 );
 
 // **Hash Password Before Saving**
