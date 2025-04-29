@@ -23,6 +23,10 @@ const messageSchema = new mongoose.Schema({
         type: String, // S3 file URL
         default: null,
     },
+    mentions: {
+        type: [String],
+        default: [],
+    },
 }, {
     timestamps: true,
 });

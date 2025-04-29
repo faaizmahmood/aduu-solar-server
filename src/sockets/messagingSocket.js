@@ -16,7 +16,7 @@ const registerMessagingSocket = (io) => {
         // Handle sendMessage
         socket.on("sendMessage", async (msgData) => {
             try {
-                const { projectId, senderId, sender, text, file } = msgData;
+                const { projectId, senderId, sender, text, file, mentions } = msgData;
 
                 const newMsg = new Message({
                     projectId: new mongoose.Types.ObjectId(projectId),
@@ -24,6 +24,7 @@ const registerMessagingSocket = (io) => {
                     senderName: sender,
                     text,
                     file,
+                    mentions
                 });
 
                 const savedMsg = await newMsg.save();
