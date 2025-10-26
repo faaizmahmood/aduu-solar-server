@@ -7,7 +7,7 @@ const db = require('./src/config/db');
 require("./src/utils/cronJobs");
 const http = require('http');
 const { Server } = require('socket.io');  // Import socket.io
-const registerMessagingSocket = require('./src/sockets/messagingSocket');
+const registerMessagingSocket = require('./src/sockets/messagingSocket'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
